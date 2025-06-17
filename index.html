@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AutoPráctica | Circuito privado para aprender a conducir</title>
-    <!-- Tailwind CSS CDN -->
+    <title>AutoPráctica | Aprende a conducir en recinto privado</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-gray-50 text-gray-800">
@@ -15,24 +14,23 @@
         <nav class="space-x-6 hidden md:block">
           <a href="#como-funciona" class="hover:text-blue-600">Cómo funciona</a>
           <a href="#tarifas" class="hover:text-blue-600">Tarifas</a>
-          <a href="#faq" class="hover:text-blue-600">FAQ</a>
+          <a href="#reservas" class="hover:text-blue-600">Reservas</a>
         </nav>
-        <button onclick="openBooking()" class="md:inline-flex hidden bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition">Reservar ahora</button>
+        <button onclick="goToBooking()" class="md:inline-flex hidden bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition">Reservar ahora</button>
       </div>
     </header>
 
-    <!-- Hero con fondo azul sin foto -->
-    <section class="bg-blue-600 text-white py-20 text-center">
-      <div class="max-w-3xl mx-auto px-4">
-        <h2 class="text-4xl font-extrabold mb-4 drop-shadow-lg">
-          Practica conducir <span class="underline decoration-white/60">sin carnet</span>
-          en un recinto 100&nbsp;% seguro
-        </h2>
-        <p class="text-lg mb-8">
-          Alquila tu <strong>slot</strong> de 2&nbsp;horas y conduce con tu acompañante en nuestro
-          circuito cerrado de 100.000&nbsp;m<sup>2</sup>, vallado y monitorizado.
-        </p>
-        <button onclick="openBooking()" class="bg-white text-blue-700 font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-gray-100 transition">Reserva tu slot</button>
+    <!-- Hero con imagen de fondo -->
+    <section
+      class="relative text-white h-[520px] flex items-center justify-center text-center"
+      style="background-image:url('portada_autopractica.png');background-size:cover;background-position:center;"
+    >
+      <!-- overlay para legibilidad -->
+      <div class="absolute inset-0 bg-blue-700/60"></div>
+      <div class="relative z-10 max-w-3xl px-4">
+        <h2 class="text-4xl font-extrabold mb-4">Practica conducir <span class="underline decoration-white/60">sin carnet</span> en recinto seguro</h2>
+        <p class="text-lg mb-8">Reserva tu <strong>slot</strong> y gana confianza al volante antes de la autoescuela.</p>
+        <button onclick="goToBooking()" class="bg-white text-blue-700 font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-gray-100 transition">Reservar ahora</button>
       </div>
     </section>
 
@@ -44,17 +42,17 @@
           <div class="bg-white p-6 rounded-2xl shadow">
             <span class="text-4xl font-extrabold text-blue-600">1</span>
             <h4 class="text-xl font-semibold mt-4 mb-2">Reserva online</h4>
-            <p>Selecciona fecha y hora disponibles. Paga con tarjeta mediante Stripe y recibe un <strong>código de acceso</strong> único.</p>
+            <p>Elige día y hora, completa tus datos y paga con tarjeta segura.</p>
           </div>
           <div class="bg-white p-6 rounded-2xl shadow">
             <span class="text-4xl font-extrabold text-blue-600">2</span>
-            <h4 class="text-xl font-semibold mt-4 mb-2">Accede al recinto</h4>
-            <p>Llega con tu vehículo. Introduce tu código en el teclado de la barrera o escanéalo con la app para que se abra automáticamente.</p>
+            <h4 class="text-xl font-semibold mt-4 mb-2">Acceso automático</h4>
+            <p>Recibirás un PIN que abre la barrera IoT del recinto.</p>
           </div>
           <div class="bg-white p-6 rounded-2xl shadow">
             <span class="text-4xl font-extrabold text-blue-600">3</span>
-            <h4 class="text-xl font-semibold mt-4 mb-2">Conduce y aprende</h4>
-            <p>Disfruta de 100&nbsp;minutos de práctica en tu carril asignado con rotondas, stops y señales reales. Sistema de cámaras y sensores IoT velan por tu seguridad.</p>
+            <h4 class="text-xl font-semibold mt-4 mb-2">Practica y aprende</h4>
+            <p>Rotondas, stops y zona de parking para dominar maniobras.</p>
           </div>
         </div>
       </div>
@@ -63,63 +61,56 @@
     <!-- Tarifas -->
     <section id="tarifas" class="bg-gray-100 py-16">
       <div class="max-w-5xl mx-auto px-4 text-center">
-        <h3 class="text-2xl font-bold mb-10">Tarifas simples y transparentes</h3>
+        <h3 class="text-2xl font-bold mb-10">Tarifas</h3>
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col">
+          <div class="bg-white p-8 rounded-2xl shadow flex flex-col">
             <h4 class="text-xl font-semibold mb-4">Slot estándar</h4>
             <p class="text-5xl font-extrabold mb-2">24€</p>
-            <p class="mb-6 text-gray-600">2&nbsp;horas / 1 vehículo</p>
-            <ul class="text-left mb-8 space-y-2">
-              <li>✅ Área exclusiva 40&nbsp;×&nbsp;12&nbsp;m</li>
-              <li>✅ Señalización vial completa</li>
-              <li>✅ Código de acceso único</li>
-            </ul>
-            <button onclick="openBooking()" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Reservar</button>
+            <p class="mb-6 text-gray-600">2 h · 1 vehículo</p>
+            <button onclick="goToBooking()" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Reservar</button>
           </div>
-          <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col">
+          <div class="bg-white p-8 rounded-2xl shadow flex flex-col">
             <h4 class="text-xl font-semibold mb-4">Slot premium</h4>
             <p class="text-5xl font-extrabold mb-2">39€</p>
-            <p class="mb-6 text-gray-600">2&nbsp;horas / 1 vehículo</p>
-            <ul class="text-left mb-8 space-y-2">
-              <li>✅ Área de 60&nbsp;×&nbsp;15&nbsp;m</li>
-              <li>✅ Conos y slalom incluidos</li>
-              <li>✅ Grabación HD de tu sesión</li>
-            </ul>
-            <button onclick="openBooking()" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Reservar</button>
+            <p class="mb-6 text-gray-600">2 h · Área ampliada</p>
+            <button onclick="goToBooking()" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Reservar</button>
           </div>
-          <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col">
+          <div class="bg-white p-8 rounded-2xl shadow flex flex-col">
             <h4 class="text-xl font-semibold mb-4">Bono 5 sesiones</h4>
             <p class="text-5xl font-extrabold mb-2">99€</p>
             <p class="mb-6 text-gray-600">Ahorra 30&nbsp;%</p>
-            <ul class="text-left mb-8 space-y-2">
-              <li>✅ 5 reservas flexibles</li>
-              <li>✅ Acceso preferente</li>
-              <li>✅ Actualizaciones de seguridad</li>
-            </ul>
-            <button onclick="openBooking()" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Comprar bono</button>
+            <button onclick="goToBooking()" class="mt-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Comprar bono</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="py-16">
-      <div class="max-w-4xl mx-auto px-4">
-        <h3 class="text-2xl font-bold text-center mb-10">Preguntas frecuentes</h3>
-        <div class="space-y-6">
-          <details class="bg-white p-4 rounded-lg shadow open:shadow-md">
-            <summary class="font-semibold cursor-pointer">¿Necesito tener carnet de conducir?</summary>
-            <p class="mt-2">No. Nuestro recinto es 100&nbsp;% privado y cerrado al tráfico público, por lo que la ley no exige permiso de conducir. Aun así, debes venir acompañado por un adulto con carnet B en vigor que asuma la supervisión.</p>
-          </details>
-          <details class="bg-white p-4 rounded-lg shadow">
-            <summary class="font-semibold cursor-pointer">¿Mi seguro cubre los daños?</summary>
-            <p class="mt-2">Tu póliza habitual suele excluir la conducción sin carnet. Por eso incluimos un seguro de responsabilidad civil interno que cubre daños a terceros dentro del recinto.</p>
-          </details>
-          <details class="bg-white p-4 rounded-lg shadow">
-            <summary class="font-semibold cursor-pointer">¿Qué pasa si llueve?</summary>
-            <p class="mt-2">El circuito drena el agua y sigue siendo seguro en lluvia moderada. Si Protección Civil decreta alerta naranja o superior, reprogramamos tu reserva sin coste.</p>
-          </details>
-        </div>
+    <!-- Reservas -->
+    <section id="reservas" class="py-20 bg-white border-t">
+      <div class="max-w-xl mx-auto px-4">
+        <h3 class="text-2xl font-bold text-center mb-6">Reserva tu slot</h3>
+        <form id="bookingForm" class="grid gap-6">
+          <div class="grid gap-2">
+            <label for="name" class="text-left font-medium">Nombre completo</label>
+            <input id="name" name="name" type="text" required class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+          </div>
+          <div class="grid gap-2">
+            <label for="email" class="text-left font-medium">Email</label>
+            <input id="email" name="email" type="email" required class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid gap-2">
+              <label for="date" class="text-left font-medium">Fecha</label>
+              <input id="date" name="date" type="date" required class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+            </div>
+            <div class="grid gap-2">
+              <label for="time" class="text-left font-medium">Hora</label>
+              <input id="time" name="time" type="time" required class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+            </div>
+          </div>
+          <button id="submitBtn" type="submit" class="bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Enviar reserva</button>
+          <p id="msg" class="text-center text-green-600 hidden">¡Reserva enviada, revisa tu correo!</p>
+        </form>
       </div>
     </section>
 
@@ -135,4 +126,9 @@
     </footer>
 
     <script>
-      function openBooking() {
+      function goToBooking() {
+        document.querySelector('#reservas').scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // Simulación envío de reserva
+      document.getElementById('bookingForm').addEventListener('
